@@ -1,7 +1,11 @@
 module Perpetuity
   module DataInjectable
-    def inject_attribute object, attribute, value
-      object.instance_variable_set("@#{attribute}", value)
+    def inject_attribute object, attribute, value, options={}
+      if options[:localized]
+        object.instance_variable_set("@#{attribute}", value["#{I18n.locale}"])
+      else
+        object.instance_variable_set("@#{attribute}", value)
+      end
     end
 
     def inject_data object, data
