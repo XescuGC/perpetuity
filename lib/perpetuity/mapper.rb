@@ -243,6 +243,10 @@ module Perpetuity
       object.instance_variable_defined?(:@id)
     end
 
+    def localized?
+      self.attrbute_set.each { |attr| return true if attr.options[:localized] }
+    end
+
     def id_for object
       object.instance_variable_get(:@id) if persisted?(object)
     end
