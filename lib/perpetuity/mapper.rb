@@ -128,6 +128,10 @@ module Perpetuity
       retrieve.limit(1).first
     end
 
+    def custom query
+      retrieve query
+    end
+
     def all
       retrieve
     end
